@@ -1,9 +1,9 @@
 ##### Project
 #ignore libraries folder
-ignore /lib/*
+/lib/*
 
 #ingore cmake build folder
-ignore /cmake-build-debug/*
+/cmake-build-debug/*
 
 ##### Windows
 # Windows thumbnail cache files
