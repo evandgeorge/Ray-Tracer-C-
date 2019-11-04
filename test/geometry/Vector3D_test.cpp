@@ -61,6 +61,12 @@ namespace raytracer {
 		ASSERT_NEAR(pow(testVec1.magnitude(), 2), testVec1.dotProduct(testVec1), DELTA);
 	}
 
+	TEST_F(Vector3D_test, test_operator_exact_equality) {
+		Vector3D identicalToVec1(x1, y1, z1);
+		ASSERT_TRUE(testVec1 == identicalToVec1);
+		ASSERT_FALSE(testVec1 == testVec2);
+	}
+
 	TEST_F(Vector3D_test, test_getNormalizedVector) {
 		double x1_norm_actual = x1 / actualMagnitudeVec1;
 		double y1_norm_actual = y1 / actualMagnitudeVec1;
