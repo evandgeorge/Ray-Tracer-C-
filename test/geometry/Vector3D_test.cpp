@@ -16,21 +16,18 @@ namespace raytracer {
 	class Vector3D_test : public ::testing::Test {
 	public:
 
-		void setUp() {
-			//reset test vector
-			testVec1 = Vector3D(x1, y1, z1);
-		}
-
 		//x, y, z components of test vector 1
-		double x1 = -3.3;
-		double y1 = 4.7;
-		double z1 = -5.3;
-		Vector3D testVec1 = Vector3D(x1, y1, z1);
+		const double x1 = -3.3;
+		const double y1 = 4.7;
+		const double z1 = -5.3;
+		const Vector3D testVec1 = Vector3D(x1, y1, z1);
+		const Vector3D normalizedVec1 = getNormalizedVector(x1, y1, z1);
+		const double actualMagnitudeVec1 = 7.814729681825213;
 
-		double x2 = 5.1;
-		double y2 = 1023;
-		double z2 = .234;
-		Vector3D testVec2 = Vector3D(x2, y2, z2);
+		const double x2 = 5.1;
+		const double y2 = 1023;
+		const double z2 = .234;
+		const Vector3D testVec2 = Vector3D(x2, y2, z2);
 	};
 
 	//TESTS
@@ -48,7 +45,6 @@ namespace raytracer {
 	}
 
 	TEST_F(Vector3D_test, test_magnitude) {
-		double actualMagnitudeVec1 = 7.814729681825213;
 		ASSERT_NEAR(actualMagnitudeVec1, testVec1.magnitude(), DELTA);
 	}
 
@@ -63,5 +59,19 @@ namespace raytracer {
 
 	TEST_F(Vector3D_test, test_dotProductOfSelfIsMagnitudeSquared) {
 		ASSERT_NEAR(pow(testVec1.magnitude(), 2), testVec1.dotProduct(testVec1), DELTA);
+	}
+
+	TEST_F(Vector3D_test, test_getNormalizedVector) {
+		double x1_norm_actual = x1 / actualMagnitudeVec1;
+		double y1_norm_actual = y1 / actualMagnitudeVec1;
+		double z1_norm_actual = z1 / actualMagnitudeVec1;
+
+		ASSERT_NEAR(x1_norm_actual, normalizedVec1.getX(), DELTA);
+		ASSERT_NEAR(y1_norm_actual, normalizedVec1.getY(), DELTA);
+		ASSERT_NEAR(z1_norm_actual, normalizedVec1.getZ(), DELTA);
+	}
+
+	TEST_F(Vector3D_test, test_getNormalizedVector_magnitudeIs1) {
+		ASSERT_NEAR(1, normalizedVec1.magnitude(), 0);
 	}
 }

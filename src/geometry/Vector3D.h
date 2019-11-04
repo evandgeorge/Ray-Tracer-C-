@@ -12,7 +12,6 @@ namespace raytracer {
 		//CONSTRUCTOR
 		Vector3D(double x, double y, double z) : x(x), y(y), z(z) {}
 
-		Vector3D normalizedVector(double x, double y, double z);
 
 		//ACCESSORS
 		double getX() const { return x; }
@@ -25,5 +24,6 @@ namespace raytracer {
 		double x, y, z;
 	};
 
+	Vector3D getNormalizedVector(double x, double y, double z);
 }
 #endif //RAYTRACERCPP_VECTOR3D_H
