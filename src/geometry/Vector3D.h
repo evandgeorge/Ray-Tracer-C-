@@ -17,6 +17,7 @@ namespace raytracer {
 		double getY() const { return y; }
 		double getZ() const { return z; }
 
+		double magnitude() const;
 	private:
 		double x, y, z;
 	};

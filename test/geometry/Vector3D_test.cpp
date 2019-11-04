@@ -7,6 +7,9 @@
 
 namespace raytracer {
 
+	//delta for floating point comparisons
+	const double DELTA = 1e-10;
+
 	//VECTOR3D TEST FIXTURE
 
 	class Vector3D_test : public ::testing::Test {
@@ -36,5 +39,10 @@ namespace raytracer {
 
 	TEST_F(Vector3D_test, test_getZ) {
 		ASSERT_EQ(testVec1.getZ(), z1);
+	}
+
+	TEST_F(Vector3D_test, test_magnitude) {
+		double actualMagnitude = 7.814729681825213;
+		ASSERT_NEAR(actualMagnitude, testVec1.magnitude(), DELTA);
 	}
 }
