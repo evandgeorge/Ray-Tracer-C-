@@ -42,7 +42,7 @@ namespace raytracer {
 	}
 
 	TEST_F(Vector3D_test, test_magnitude) {
-		double actualMagnitude = 7.814729681825213;
-		ASSERT_NEAR(actualMagnitude, testVec1.magnitude(), DELTA);
+		double actualMagnitudeVec1 = 7.814729681825213;
+		ASSERT_NEAR(actualMagnitudeVec1, testVec1.magnitude(), DELTA);
 	}
 }
