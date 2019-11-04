@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(Ray_Tracer)
+project(RayTracerCPP)
 
-add_subdirectory(src)
+include_directories(src)
 add_subdirectory(test)
 
 add_subdirectory(lib/googletest-master)
@@ -10,5 +10,5 @@ include_directories(lib/googletest-master/googlemock/include)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Ray_Tracer main.cpp test/test.cpp)
+add_executable(Ray_Tracer main.cpp test/test.cpp src/geometry/Vector3D.cpp src/geometry/Vector3D.h test/geometry/Vector3D_test.cpp)
 target_link_libraries(Ray_Tracer gtest gtest_main)
