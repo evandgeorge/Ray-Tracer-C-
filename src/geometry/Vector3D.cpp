@@ -57,6 +57,5 @@ raytracer::Vector3D raytracer::Vector3D::operator-() const {
 
 //returns a Vector3D in the direction of (x, y, z) with size 1
 raytracer::Vector3D raytracer::getNormalizedVector(const Vector3D &v) {
-	double magnitude = v.magnitude();
-	return v / magnitude;
+	return v / v.magnitude();
 }
