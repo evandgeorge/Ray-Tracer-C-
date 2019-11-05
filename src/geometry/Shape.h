@@ -15,7 +15,7 @@ namespace raytracer {
 		Shape(const Color &c, double r) : color(c), reflectivity(r) {}
 
 		//abstract method to be implemented by subclasses of shape that find the time of the first intersection between the ray and the shape
-		virtual double findIntersection(const Ray &ray) = 0;
+		virtual double findIntersection(const Ray &ray) const = 0;
 	private:
 		Color color;
 		double reflectivity;	//Proportion of light that is reflected, complement of proportion of light that is scattered (matte reflectance)
