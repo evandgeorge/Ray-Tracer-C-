@@ -23,36 +23,36 @@ bool raytracer::Vector3D::operator==(const raytracer::Vector3D &v) const {
 //returns *this + v
 raytracer::Vector3D raytracer::Vector3D::operator+(const raytracer::Vector3D &v) const {
 	return {x + v.x,
-		 	y + v.y,
-		 	z + v.z};
+		y + v.y,
+		z + v.z};
 }
 
 //returns *this - v
 raytracer::Vector3D raytracer::Vector3D::operator-(const raytracer::Vector3D &v) const {
 	return {x - v.x,
-			y - v.y,
-			z - v.z};
+		y - v.y,
+		z - v.z};
 }
 
 //returns *this * f (scalar)
 raytracer::Vector3D raytracer::Vector3D::operator*(double f) const {
 	return {x * f,
-			y * f,
-			z * f};
+		y * f,
+		z * f};
 }
 
 //returns *this / f (scalar)
 raytracer::Vector3D raytracer::Vector3D::operator/(double d) const {
 	return {x / d,
-			y / d,
-			z / d};
+		y / d,
+		z / d};
 }
 
 //returns -(*this)
 raytracer::Vector3D raytracer::Vector3D::operator-() const {
 	return {-x,
-			-y,
-			-z};
+		-y,
+		-z};
 }
 
 //returns a Vector3D in the direction of (x, y, z) with size 1
