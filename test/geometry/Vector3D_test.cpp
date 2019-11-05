@@ -67,6 +67,28 @@ namespace raytracer {
 		ASSERT_FALSE(testVec1 == testVec2);
 	}
 
+	TEST_F(Vector3D_test, test_operator_add) {
+		ASSERT_EQ(Vector3D(x1 + x2, y1 + y2, z1 + z2), testVec1 + testVec2);
+	}
+
+	TEST_F(Vector3D_test, test_operator_subtract) {
+		ASSERT_EQ(Vector3D(x1 - x2, y1 - y2, z1 - z2), testVec1 - testVec2);
+	}
+
+	TEST_F(Vector3D_test, test_operator_multiply) {
+		//test multiplication with arbitrary factor 3.42
+		ASSERT_EQ(Vector3D(x1 * 3.42, y1 * 3.42, z1 * 3.42), testVec1 * 3.42);
+	}
+
+	TEST_F(Vector3D_test, test_operator_divide) {
+		//test multiplication with arbitrary factor 3.42
+		ASSERT_EQ(Vector3D(x1 / 3.42, y1 / 3.42, z1 / 3.42), testVec1 / 3.42);
+	}
+
+	TEST_F(Vector3D_test, test_operator_negate) {
+		ASSERT_EQ(Vector3D(-x1, -y1, -z1), -testVec1);
+	}
+
 	TEST_F(Vector3D_test, test_getNormalizedVector) {
 		double x1_norm_actual = x1 / actualMagnitudeVec1;
 		double y1_norm_actual = y1 / actualMagnitudeVec1;

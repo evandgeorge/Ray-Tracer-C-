@@ -17,11 +17,16 @@ namespace raytracer {
 		double getY() const { return y; }
 		double getZ() const { return z; }
 
-		double magnitude() const;					//returns the magnitude of the vector
-		double dotProduct(const Vector3D &v) const;	//returns the dot product of this and v
+		double magnitude() const;						//returns the magnitude of the vector
+		double dotProduct(const Vector3D &v) const;		//returns the dot product of *this and v
 
 		//OPERATORS
-		bool operator==(const Vector3D &v) const;	//returns true if the vectors are exactly identical
+		bool operator==(const Vector3D &v) const;		//returns true if the vectors are exactly identical
+		Vector3D operator-(const Vector3D &v) const;	//returns *this - v
+		Vector3D operator+(const Vector3D &v) const;	//returns *this + v
+		Vector3D operator*(double f) const;				//returns *this * f (scalar)
+		Vector3D operator/(double d) const;				//returns *this / f (scalar)
+		Vector3D operator-() const;						//returns -(*this)
 	private:
 		double x, y, z;
 	};
