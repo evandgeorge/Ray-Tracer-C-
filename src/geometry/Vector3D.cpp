@@ -21,7 +21,7 @@ bool raytracer::Vector3D::operator==(const raytracer::Vector3D &v) const {
 }
 
 //returns a Vector3D in the direction of (x, y, z) with size 1
-raytracer::Vector3D raytracer::getNormalizedVector(double x, double y, double z) {
-	double magnitude = sqrt(x*x + y*y + z*z);
-	return raytracer::Vector3D(x / magnitude, y / magnitude, z / magnitude);
+raytracer::Vector3D raytracer::getNormalizedVector(const Vector3D &v) {
+	double magnitude = v.magnitude();
+	return raytracer::Vector3D(v.getX() / magnitude, v.getY() / magnitude, v.getZ() / magnitude);
 }

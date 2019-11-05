@@ -27,6 +27,6 @@ namespace raytracer {
 	};
 
 	//returns a Vector3D in the direction of (x, y, z) with size 1
-	Vector3D getNormalizedVector(double x, double y, double z);
+	raytracer::Vector3D getNormalizedVector(const Vector3D &v);
 }
 #endif //RAYTRACERCPP_VECTOR3D_H

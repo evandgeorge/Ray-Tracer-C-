@@ -21,7 +21,7 @@ namespace raytracer {
 		const double y1 = 4.7;
 		const double z1 = -5.3;
 		const Vector3D testVec1 = Vector3D(x1, y1, z1);
-		const Vector3D normalizedVec1 = getNormalizedVector(x1, y1, z1);
+		const Vector3D normalizedVec1 = getNormalizedVector(testVec1);
 		const double actualMagnitudeVec1 = 7.814729681825213;
 
 		const double x2 = 5.1;
