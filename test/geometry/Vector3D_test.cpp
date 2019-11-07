@@ -9,7 +9,7 @@
 namespace raytracer {
 
 	//delta for floating point comparisons
-	const double DELTA = 1e-10;
+	const double DELTA = 1e-5;
 
 	//VECTOR3D TEST FIXTURE
 
@@ -23,11 +23,16 @@ namespace raytracer {
 		const Vector3D testVec1 = Vector3D(x1, y1, z1);
 		const Vector3D normalizedVec1 = getNormalizedVector(testVec1);
 		const double actualMagnitudeVec1 = 7.814729681825213;
+		const double thetaVec1 = 2.31611556000232367;
+		const double phiVec1 = 2.18294882373997998;
 
 		const double x2 = 5.1;
 		const double y2 = 1023;
 		const double z2 = .234;
 		const Vector3D testVec2 = Vector3D(x2, y2, z2);
+
+		const Vector3D testVec1_rotatedAbout_testVec2_halfPi = Vector3D(-5.27767, 4.70789, 3.32446);
+		const Vector3D testVec1_cross_testVec2 = Vector3D(5422.9998, -26.2578, -3399.87);
 	};
 
 	//TESTS
@@ -59,6 +64,13 @@ namespace raytracer {
 
 	TEST_F(Vector3D_test, test_dotProductOfSelfIsMagnitudeSquared) {
 		ASSERT_NEAR(pow(testVec1.magnitude(), 2), testVec1.dotProduct(testVec1), DELTA);
+	}
+
+	TEST_F(Vector3D_test, test_crossProduct) {
+		Vector3D calculatedCrossProduct = testVec1.crossProduct(testVec2);
+		ASSERT_NEAR(calculatedCrossProduct.getX(), testVec1_cross_testVec2.getX(), DELTA);
+		ASSERT_NEAR(calculatedCrossProduct.getY(), testVec1_cross_testVec2.getY(), DELTA);
+		ASSERT_NEAR(calculatedCrossProduct.getZ(), testVec1_cross_testVec2.getZ(), DELTA);
 	}
 
 	TEST_F(Vector3D_test, test_operator_exact_equality) {
@@ -101,5 +113,21 @@ namespace raytracer {
 
 	TEST_F(Vector3D_test, test_getNormalizedVector_magnitudeIs1) {
 		ASSERT_NEAR(1, normalizedVec1.magnitude(), 0);
+	}
+
+	TEST_F(Vector3D_test, test_sphericalToCartesian) {
+		Vector3D cartesian = sphericalToCartesian(actualMagnitudeVec1, thetaVec1, phiVec1);
+
+		ASSERT_NEAR(x1, cartesian.getX(), DELTA);
+		ASSERT_NEAR(y1, cartesian.getY(), DELTA);
+		ASSERT_NEAR(z1, cartesian.getZ(), DELTA);
+	}
+
+	TEST_F(Vector3D_test, test_rotatedAbout) {
+		Vector3D calculatedRotation = testVec1.rotatedAbout(testVec2, M_PI / 2);
+
+		ASSERT_NEAR(testVec1_rotatedAbout_testVec2_halfPi.getX(), calculatedRotation.getX(), DELTA);
+		ASSERT_NEAR(testVec1_rotatedAbout_testVec2_halfPi.getY(), calculatedRotation.getY(), DELTA);
+		ASSERT_NEAR(testVec1_rotatedAbout_testVec2_halfPi.getZ(), calculatedRotation.getZ(), DELTA);
 	}
 }

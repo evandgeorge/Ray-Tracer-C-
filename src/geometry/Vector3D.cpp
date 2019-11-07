@@ -10,9 +10,18 @@ double raytracer::Vector3D::magnitude() const {
 	return sqrt(x*x + y*y + z*z);
 }
 
-//returns the dot product of this and v
+//returns the dot product of *this and v
 double raytracer::Vector3D::dotProduct(const Vector3D &v) const {
 	return (x * v.x) + (y * v.y) + (z * v.z);
+}
+
+//returns *this cross v
+raytracer::Vector3D raytracer::Vector3D::crossProduct(const Vector3D &v) const {
+	double x_cross = y * v.z - z * v.y;
+	double y_cross = z * v.x - x * v.z;
+	double z_cross = x * v.y - y * v.x;
+
+	return Vector3D(x_cross, y_cross, z_cross);
 }
 
 //returns true if the vectors are exactly identical
@@ -55,7 +64,19 @@ raytracer::Vector3D raytracer::Vector3D::operator-() const {
 		-z};
 }
 
+//returns *this rotated about the rotation axis described by v. It is not required that v is normalized because its normal is used for calculations.
+raytracer::Vector3D raytracer::Vector3D::rotatedAbout(const raytracer::Vector3D &v, double angle) const {
+	Vector3D axisNormal = getNormalizedVector(v);
+	return *this * cos(angle) + (axisNormal.crossProduct(*this) * sin(angle) + axisNormal * (axisNormal.dotProduct(*this)) * (1 - cos(angle)));
+}
+
 //returns a Vector3D in the direction of (x, y, z) with size 1
 raytracer::Vector3D raytracer::getNormalizedVector(const Vector3D &v) {
 	return v / v.magnitude();
+}
+
+raytracer::Vector3D raytracer::sphericalToCartesian(double r, double theta, double phi) {
+	return {r * sin(theta) * cos(phi),
+		 r * sin(theta) * sin(phi),
+		 r * cos(theta)};
 }

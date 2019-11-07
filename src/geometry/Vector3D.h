@@ -11,6 +11,7 @@ namespace raytracer {
 	public:
 		//CONSTRUCTOR
 		Vector3D(double x, double y, double z) : x(x), y(y), z(z) {}
+		Vector3D() : x(0), y(0), z(0) {}
 
 		//ACCESSORS
 		double getX() const { return x; }
@@ -19,6 +20,10 @@ namespace raytracer {
 
 		double magnitude() const;						//returns the magnitude of the vector
 		double dotProduct(const Vector3D &v) const;		//returns the dot product of *this and v
+		Vector3D crossProduct(const Vector3D &v) const;	//returns *this cross v
+
+		//returns *this rotated about the rotation axis described by v. It is not required that v is normalized
+		raytracer::Vector3D rotatedAbout(const raytracer::Vector3D &v, double angle) const;
 
 		//OPERATORS
 		bool operator==(const Vector3D &v) const;		//returns true if the vectors are exactly identical
@@ -32,6 +37,7 @@ namespace raytracer {
 	};
 
 	//returns a Vector3D in the direction of (x, y, z) with size 1
-	raytracer::Vector3D getNormalizedVector(const Vector3D &v);
+	Vector3D getNormalizedVector(const Vector3D &v);
+	Vector3D sphericalToCartesian(double r, double theta, double phi);
 }
 #endif //RAYTRACERCPP_VECTOR3D_H
