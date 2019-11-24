@@ -66,11 +66,14 @@ namespace raytracer {
                 -z};
     }
 
-    //returns *this rotated about the rotation axis described by v. It is not required that v is normalized because its normal is used for calculations.
+    //returns *this rotated about the rotation axis described by v.
+    //it is not required that v is normal because its normal is used for calculations.
+    //Uses Rodrigues' rotation formula https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
     Vector3D Vector3D::rotatedAbout(const Vector3D &v, double angle) const {
         Vector3D axisNormal = getNormalizedVector(v);
-        return *this * cos(angle) + (axisNormal.crossProduct(*this) * sin(angle) +
-                                     axisNormal * (axisNormal.dotProduct(*this)) * (1 - cos(angle)));
+        return *this * cos(angle)
+               + (axisNormal.crossProduct(*this) * sin(angle)
+               + axisNormal * (axisNormal.dotProduct(*this)) * (1 - cos(angle)));
     }
 
     //returns a Vector3D in the direction of (x, y, z) with size 1
