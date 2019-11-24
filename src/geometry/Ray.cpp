@@ -3,3 +3,8 @@
 //
 
 #include "Ray.h"
+
+//returns the position of the ray at time t
+raytracer::Vector3D raytracer::Ray::positionAt(double t) const {
+	return position + direction * t;
+}

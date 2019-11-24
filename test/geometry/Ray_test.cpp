@@ -7,6 +7,8 @@
 #include <geometry/Ray.h>
 
 namespace raytracer {
+#define DELTA 1e-10
+
 	class Ray_test : public ::testing::Test {
 	public:
 
@@ -32,5 +34,16 @@ namespace raytracer {
 
 	TEST_F(Ray_test, normalizesDirectionVector) {
 		ASSERT_EQ(expectedDirection, testRay.direction);
+	}
+
+	TEST_F(Ray_test, positionAtGivenTime) {
+		Ray simpleTestRay(Vector3D(-1, -1, -1), Vector3D(1, 1, 1));
+		double expectedTimeToReachOrigin = 1.73205080757;
+		Vector3D actualPosition = simpleTestRay.positionAt(expectedTimeToReachOrigin);
+		//ray should reach the origin at t = ~1.732
+
+		ASSERT_NEAR(actualPosition.getX(), 0, DELTA);
+		ASSERT_NEAR(actualPosition.getY(), 0, DELTA);
+		ASSERT_NEAR(actualPosition.getZ(), 0, DELTA);
 	}
 }
