@@ -12,8 +12,8 @@ bool raytracer::Sphere::findFirstIntersection(const raytracer::Ray &ray, double 
 	//where x is the time of intersection and a, b and c are defined as follows:
 
 	double a = 1;
-	double b = 2 * ray.direction.dotProduct(ray.position - this->center);
-	double c = (ray.position - this->center).dotProduct(ray.position - this->center) - pow(radius, 2);
+	double b = 2 * ray.direction.dotProduct(ray.origin - this->center);
+	double c = (ray.origin - this->center).dotProduct(ray.origin - this->center) - pow(radius, 2);
 
 	//calculate the discriminant to tell if there are solutions
 	double discriminant = b*b - 4*a*c;

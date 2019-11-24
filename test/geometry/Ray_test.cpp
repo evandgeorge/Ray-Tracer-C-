@@ -29,7 +29,7 @@ namespace raytracer {
 	};
 
 	TEST_F(Ray_test, hasPosition) {
-		ASSERT_EQ(position, testRay.position);
+		ASSERT_EQ(position, testRay.origin);
 	}
 
 	TEST_F(Ray_test, normalizesDirectionVector) {

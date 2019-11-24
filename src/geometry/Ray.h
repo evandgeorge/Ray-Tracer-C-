@@ -10,12 +10,12 @@
 namespace raytracer {
 	class Ray {
 	public:
-		Ray(const Vector3D &pos, const Vector3D &dir) : position(pos), direction(getNormalizedVector(dir)) {}
+		Ray(const Vector3D &origin, const Vector3D &direction) : origin(origin), direction(getNormalizedVector(direction)) {}
 
 		//returns the position of the ray at time t
 		Vector3D positionAt(double t) const;
 
-		const Vector3D position;
+		const Vector3D origin;
 		const Vector3D direction;
 	};
 }
