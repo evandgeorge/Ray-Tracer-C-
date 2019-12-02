@@ -8,6 +8,7 @@
 
 namespace raytracer {
 
+	//construct the screen in 3D space given the origin of the camera, width, height, field of view, and rotation
 	Screen::Screen(Vector3D origin,
 				   const int width, const int height,
 				   double hFOV,
@@ -54,6 +55,7 @@ namespace raytracer {
 				pixelCenters[x][y] = new Vector3D(topLeftCorner + (horizontalDifference * (x + .5)) + (verticalDifference * (y + .5)));
 	}
 
+	//create the corners with proper relative positions without any rotation, centered on the z axis
 	void Screen::makePreRotationCorners(Vector3D &topLeftCorner, Vector3D &topRightCorner, Vector3D &bottomRightCorner, Vector3D &bottomLeftCorner,
 										double originToCorners, double inclinationFromCentralAxis, double xy_rotation, double azimuthFromCentralAxis) const {
 
@@ -63,6 +65,7 @@ namespace raytracer {
 		bottomLeftCorner = sphericalToCartesian(originToCorners, -inclinationFromCentralAxis, xy_rotation - azimuthFromCentralAxis);
 	}
 
+	//rotate the corners by a given angle about a given rotation axis
 	void Screen::rotateCorners(Vector3D &topLeftCorner, Vector3D &topRightCorner, Vector3D &bottomRightCorner,
 							   Vector3D &bottomLeftCorner, const Vector3D &rotationAxis, double angle) const {
 
@@ -72,7 +75,7 @@ namespace raytracer {
 		bottomLeftCorner = bottomLeftCorner.rotatedAbout(rotationAxis, angle);
 	}
 
-
+	//translate the corners by the origin vector so they are in the correct position
 	void Screen::moveToCameraCenter(Vector3D &topLeftCorner, Vector3D &topRightCorner, Vector3D &bottomRightCorner,
 									Vector3D &bottomLeftCorner, const Vector3D &origin) const {
 
@@ -82,6 +85,7 @@ namespace raytracer {
 		bottomLeftCorner = bottomLeftCorner + origin;
 	}
 
+	//return the Vector3D describing the center of a pixel located at (x, y) on the screen
 	Vector3D &raytracer::Screen::centerOfPixel(int x, int y) const {
 		return *pixelCenters[x][y];
 	}
