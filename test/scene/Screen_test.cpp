@@ -13,9 +13,9 @@ namespace raytracer {
 
 	class Screen_test : public ::testing::Test {
 	public:
-		double origin_x = 0;
-		double origin_y = 0;
-		double origin_z = 0;
+		double origin_x = 5000;
+		double origin_y = 2;
+		double origin_z = -3;
 		Vector3D origin = Vector3D(origin_x, origin_y, origin_z);
 		int width = 3;
 		int height = 3;
@@ -27,6 +27,7 @@ namespace raytracer {
 		Screen testScreen_rotated = Screen(origin, width, height, hFOV, xy_rotation, M_PI/2);
 		Screen testScreen_rotated_both_axis = Screen(origin, width, height, hFOV, M_PI/2, M_PI/2);
 		Screen testScreen_rotated_about_center = Screen(origin, width, height, hFOV, 0, 0, M_PI/4);
+
 	};
 
 	TEST_F(Screen_test, noRotation_middlePixel) {
