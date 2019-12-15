@@ -2,7 +2,6 @@
 // Created by Evan on 11/24/2019.
 //
 
-#include <cassert>
 #include "Screen.h"
 #include <cmath>
 
