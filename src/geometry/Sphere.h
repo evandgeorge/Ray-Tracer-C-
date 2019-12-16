@@ -17,6 +17,9 @@ namespace raytracer {
 		//returns true if non-negative intersections are found, false if not
 		bool findFirstIntersection(const raytracer::Ray &ray, double &time, raytracer::SurfacePoint &surfacePoint) const override;
 	private:
+		//returns the surface normal at a point on the shapes surface
+		Vector3D surfaceNormalAt(const Vector3D &point) const override { return getNormalizedVector(point - center); }
+
 		Vector3D center;
 		double radius;
 	};

@@ -19,6 +19,9 @@ namespace raytracer {
 		//returns true if non-negative intersections are found, false if not
 		virtual bool findFirstIntersection(const Ray &ray, double &time, SurfacePoint &surfacePoint) const = 0;
 	private:
+		//abstract method to be implemented by subclasses of shape that returns the surface normal at a point on the shapes surface
+		virtual Vector3D surfaceNormalAt(const Vector3D &point) const = 0;
+
 		Color color;
 		double reflectivity;	//Proportion of light that is reflected, complement of proportion of light that is scattered (matte reflectance)
 	};
