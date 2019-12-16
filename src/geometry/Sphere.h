@@ -15,7 +15,7 @@ namespace raytracer {
 
 		//finds the time of the first intersection between the ray and *this
 		//returns true if non-negative intersections are found, false if not
-		bool findFirstIntersection(const raytracer::Ray &ray, double &time) const;
+		bool findFirstIntersection(const raytracer::Ray &ray, double &time, raytracer::SurfacePoint &surfacePoint) const override;
 	private:
 		Vector3D center;
 		double radius;

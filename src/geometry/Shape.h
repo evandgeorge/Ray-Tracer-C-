@@ -8,6 +8,7 @@
 #include "Color.h"
 #include "Vector3D.h"
 #include "Ray.h"
+#include "SurfacePoint.h"
 
 namespace raytracer {
 	class Shape {
@@ -16,7 +17,7 @@ namespace raytracer {
 
 		//abstract method to be implemented by subclasses of shape that find the time of the first intersection between the ray and the shape
 		//returns true if non-negative intersections are found, false if not
-		virtual bool findFirstIntersection(const raytracer::Ray &ray, double &time) const = 0;
+		virtual bool findFirstIntersection(const Ray &ray, double &time, SurfacePoint &surfacePoint) const = 0;
 	private:
 		Color color;
 		double reflectivity;	//Proportion of light that is reflected, complement of proportion of light that is scattered (matte reflectance)
