@@ -26,15 +26,34 @@ namespace raytracer {
 	TEST_F(Sphere_test, findFirstIntersection) {
 		//ray should intersect with sphere surface at t=1.7
 		double t;
-		bool intersects = sphere.findFirstIntersection(ray, t);
+		SurfacePoint s;
+		bool intersects = sphere.findFirstIntersection(ray, t, s);
+
+		//check function found intersection
 		ASSERT_TRUE(intersects);
+
+		//check time parameter
 		ASSERT_NEAR(1.7, t, DELTA);
+
+		//check position of SurfacePoint parameter
+		ASSERT_NEAR(s.getPosition().getX(), 0, DELTA);
+		ASSERT_NEAR(s.getPosition().getY(), 0, DELTA);
+		ASSERT_NEAR(s.getPosition().getZ(), .7, DELTA);
+
+		//check surfaceNormal of SurfacePoint parameter
+		ASSERT_NEAR(s.getSurfaceNormal().getX(), 0, DELTA);
+		ASSERT_NEAR(s.getSurfaceNormal().getY(), 0, DELTA);
+		ASSERT_NEAR(s.getSurfaceNormal().getZ(), -1, DELTA);
+
+		//check the Shape pointer of the SurfacePoint parameter
+		ASSERT_EQ(s.getShapePointer(), &sphere);
 	}
 
 	TEST_F(Sphere_test, findFirstIntersection_noIntersection) {
 		//ray should not intersect sphere
 		double t;
-		bool intersects = sphere.findFirstIntersection(Ray(opositeRay), t);
+		SurfacePoint s;
+		bool intersects = sphere.findFirstIntersection(Ray(opositeRay), t, s);
 		ASSERT_FALSE(intersects);
 	}
 }

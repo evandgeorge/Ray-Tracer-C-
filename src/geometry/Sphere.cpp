@@ -7,7 +7,7 @@
 
 //finds the time of the first intersection between the ray and *this
 //returns true if non-negative intersections are found, false if not
-bool raytracer::Sphere::findFirstIntersection(const raytracer::Ray &ray, double &time) const {
+bool raytracer::Sphere::findFirstIntersection(const raytracer::Ray &ray, double &time, raytracer::SurfacePoint &surfacePoint) const {
 	//ray-sphere intersection equation is quadratic (in the form ax^2 + bx + c = 0)
 	//where x is the time of intersection and a, b and c are defined as follows:
 
@@ -31,6 +31,11 @@ bool raytracer::Sphere::findFirstIntersection(const raytracer::Ray &ray, double 
 			time = t2;
 		else
 			return false;
+
+		Vector3D intersectionPoint = ray.positionAt(time);
+		Vector3D surfaceNormal = surfaceNormalAt(intersectionPoint);
+
+		surfacePoint = SurfacePoint(intersectionPoint, surfaceNormal, this);
 
 		return true;
 	}
