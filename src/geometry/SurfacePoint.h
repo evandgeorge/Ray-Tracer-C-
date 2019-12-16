@@ -18,9 +18,9 @@ namespace raytracer {
 		SurfacePoint(const Vector3D &position, const Vector3D &surfaceNormal, const Shape* shape)
 			: position(position), surfaceNormal(surfaceNormal), shape(shape) {}
 
-		const Vector3D &getPosition() { return position; }
-		const Vector3D &getSurfaceNormal() { return surfaceNormal; }
-		const Shape* getShapePointer() { return shape; }
+		const Vector3D &getPosition() const { return position; }
+		const Vector3D &getSurfaceNormal() const { return surfaceNormal; }
+		const Shape* getShapePointer() const { return shape; }
 
 	private:
 		Vector3D position;				//position of the point on the objects surface
