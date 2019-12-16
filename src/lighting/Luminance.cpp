@@ -6,7 +6,7 @@
 
 namespace raytracer {
 
-	raytracer::Luminance::Luminance(double r, double b, double g) : r(r), g(g), b(b) {
+	raytracer::Luminance::Luminance(double r, double g, double b) : r(r), g(g), b(b) {
 		//check that all components are non-negative
 		assert(r >= 0);
 		assert(g >= 0);
