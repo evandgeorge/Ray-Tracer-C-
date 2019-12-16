@@ -18,16 +18,24 @@ namespace raytracer {
 	public:
 		LightSource(const Luminance &sourceLuminance) : sourceLuminance(sourceLuminance) {}
 
-		//abstract method to be implemented by subclasses of LightSource that returns the luminance at a SurfacePoint on a shape
+		//abstract method with default implementation returning the luminance at a SurfacePoint on a shape
 		virtual Luminance luminanceAtPoint(const SurfacePoint &point, const std::vector<Shape> &shapes) const = 0;
 
 		void setLuminance(const Luminance &luminance) { sourceLuminance = luminance; }
-	private:
+
+	protected:
+		//abstract method to be implemented by subclasses of LightSource that returns the shadow ray from a given point
+		virtual Ray shadowRayFromPoint(const SurfacePoint &point) const = 0;
+
 		Luminance sourceLuminance;
 	};
 
 	//return the "Luminance" or light emitted from a point p on the surface of the shape from all light sources
-	Luminance luminanceAtPoint(const SurfacePoint &p, const std::vector<LightSource> &lightSources, const std::vector<Shape> &shapes);
+	Luminance globalLuminanceAtPoint(const SurfacePoint &p, const std::vector<LightSource> &lightSources,
+									 const std::vector<Shape> &shapes);
+
+	//returns true if the light source shadowRay belongs to is blocked before it reaches a certain shape
+	bool inShadow(const Ray &shadowRay, double timeToLightSource, const std::vector<Shape> &shapes);
 }
 
 #endif //RAYTRACERCPP_LIGHTSOURCE_H
