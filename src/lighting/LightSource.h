@@ -16,11 +16,12 @@ namespace raytracer {
 	class LightSource {
 
 	public:
-		void setLuminance(const Luminance &luminance) { rayLuminance = luminance; }
+		//abstract method to be implemented by subclasses of LightSource that returns the luminance at a SurfacePoint on a shape
 		virtual Luminance luminanceAtPoint(const SurfacePoint &point, const std::vector<Shape> &shapes) const = 0;
 
+		void setLuminance(const Luminance &luminance) { sourceLuminance = luminance; }
 	private:
-		Luminance rayLuminance;
+		Luminance sourceLuminance;
 	};
 
 	//return the "Luminance" or light emitted from a point p on the surface of the shape from all light sources
