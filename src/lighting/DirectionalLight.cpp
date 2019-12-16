@@ -1,0 +1,27 @@
+//
+// Created by Evan George on 12/15/19.
+//
+
+#include <cmath>
+#include "DirectionalLight.h"
+
+namespace raytracer {
+
+	Luminance DirectionalLight::luminanceAtPoint(const SurfacePoint &point, const std::vector<Shape*> &shapes) const {
+		Ray shadowRay = shadowRayFromPoint(point);
+
+		//if the point is in shadow return 0 Luminance
+		if(inShadow(shadowRay, INFINITY, shapes))
+			return {0, 0, 0};
+
+		//ratio between the intensity of emitted light to the intensity of the incident light
+		double matteFactor = point.getSurfaceNormal().dotProduct(shadowRay.direction);
+
+		return matteFactor * sourceLuminance * point.getShapePointer()->getColor();
+	}
+
+	Ray DirectionalLight::shadowRayFromPoint(const SurfacePoint &point) const {
+		return Ray(point.getPosition() + direction * .01, direction);
+	}
+
+}
