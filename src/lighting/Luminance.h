@@ -20,6 +20,7 @@ namespace raytracer {
 		double getG() const { return g; }
 		double getB() const { return b; }
 
+		Luminance &operator+=(const Luminance &l);
 	private:
 		//red, green and blue components of the light
 		double r, g, b;

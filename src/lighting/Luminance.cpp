@@ -13,6 +13,14 @@ namespace raytracer {
 		assert(b >= 0);
 	}
 
+	Luminance &Luminance::operator+=(const Luminance &l) {
+		this->r += l.r;
+		this->g += l.g;
+		this->b += l.b;
+
+		return *this;
+	}
+
 	//multiplies the luminance by a color, i.e. the light reflected off a colored surface instead of absorbed
 	Luminance operator*(const Luminance &luminance, const Color &color) {
 		return {luminance.getR() * color.r,
