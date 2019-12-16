@@ -23,10 +23,10 @@ namespace raytracer {
 		const Shape* getShapePointer() { return shape; }
 
 	private:
-		Vector3D position;			//position of the point on the objects surface
-		Vector3D surfaceNormal;		//surface normal at the point
+		Vector3D position;				//position of the point on the objects surface
+		Vector3D surfaceNormal;			//surface normal at the point
 
-		const Shape* shape;			//pointer to shape the surface point lies on
+		const Shape* shape = nullptr;	//pointer to shape the surface point lies on
 	};
 
 }
