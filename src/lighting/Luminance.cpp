@@ -28,4 +28,10 @@ namespace raytracer {
 				luminance.getB() * color.b};
 	}
 
+	//multiplies the luminance by a scalar factor
+	Luminance operator*(double f, const Luminance &luminance) {
+		return {luminance.getR() * f,
+				luminance.getG() * f,
+				luminance.getB() * f};
+	}
 }

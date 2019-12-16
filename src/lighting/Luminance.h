@@ -28,6 +28,9 @@ namespace raytracer {
 
 	//multiplies the luminance by a color, i.e. the light reflected off a colored surface instead of absorbed
 	Luminance operator*(const Luminance &luminance, const Color &color);
+
+	//multiplies the luminance by a scalar factor
+	Luminance operator*(double f, const Luminance &luminance);
 }
 
 #endif //RAYTRACERCPP_LUMINANCE_H
