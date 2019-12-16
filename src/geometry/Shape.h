@@ -18,6 +18,8 @@ namespace raytracer {
 		//abstract method to be implemented by subclasses of shape that find the time of the first intersection between the ray and the shape
 		//returns true if non-negative intersections are found, false if not
 		virtual bool findFirstIntersection(const Ray &ray, double &time, SurfacePoint &surfacePoint) const = 0;
+
+		const Color &getColor() const { return color; }
 	private:
 		//abstract method to be implemented by subclasses of shape that returns the surface normal at a point on the shapes surface
 		virtual Vector3D surfaceNormalAt(const Vector3D &point) const = 0;
