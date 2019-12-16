@@ -13,7 +13,7 @@ namespace raytracer {
 
 	struct SurfacePoint {
 
-		SurfacePoint() {}
+		SurfacePoint() = default;
 
 		SurfacePoint(const Vector3D &position, const Vector3D &surfaceNormal, const Shape* shape)
 			: position(position), surfaceNormal(surfaceNormal), shape(shape) {}
