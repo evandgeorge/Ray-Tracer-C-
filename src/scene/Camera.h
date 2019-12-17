@@ -32,15 +32,19 @@ namespace raytracer {
 		double z_rotation;				//rotation of the camera off the z axis
 		double roll;					//rotation of the camera about its axis
 
-		Screen* cameraScreen = nullptr;	//pointer to the screen of the camera
-		Ray ***cameraRays = nullptr;	//2D array of Ray pointers to each pixel's camera ray
+		Screen cameraScreen;			//screen of the camera
+		Ray ***cameraRays;				//2D array of pointers to the pixel's camera rays
 
-		//clear dynamic memory for camera rays
+		//allocate dynamic memory for camera rays
+		void allocateCameraRays();
+
+		//cleanup dynamic memory for camera rays
 		void destroyCameraRays();
 
 		//methods for creating or updating cameraScreen and cameraRays
-		void createScreen();
+		void rebuildScreen();
 		void createCameraRays();
+
 	};
 
 }
