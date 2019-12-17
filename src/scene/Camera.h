@@ -33,7 +33,7 @@ namespace raytracer {
 		double roll;					//rotation of the camera about its axis
 
 		Screen cameraScreen;			//screen of the camera
-		Ray ***cameraRays;				//2D array of pointers to the pixel's camera rays
+		Ray ***cameraRays = nullptr;	//2D array of pointers to the pixel's camera rays
 
 		//allocate dynamic memory for camera rays
 		void allocateCameraRays();
