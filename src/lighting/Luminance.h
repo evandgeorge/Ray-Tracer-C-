@@ -12,8 +12,9 @@ namespace raytracer {
 
 	class Luminance {
 	public:
-		//CONSTRUCTOR
+		//CONSTRUCTORS
 		Luminance(double r, double b, double g);
+		Luminance() : r(0), g(0), b(0) {}
 
 		//ACCESSORS
 		double getR() const { return r; }
