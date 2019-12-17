@@ -33,7 +33,7 @@ namespace raytracer {
 		//assigns the position of the center of each pixel in 3D space
 		void setPixelCenters(const ScreenCorners &corners);
 
-		const int width, height;		//resolution of the camera
+		int width, height;		//resolution of the camera
 		Vector3D **pixelCenters;		//2D array of Vector3D pointers containing the position of the center of each pixel on the screen in the scene
 	};
 
