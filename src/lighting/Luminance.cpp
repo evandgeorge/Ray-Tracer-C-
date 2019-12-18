@@ -21,6 +21,13 @@ namespace raytracer {
 		return *this;
 	}
 
+	//adds luminances
+	Luminance operator+(const Luminance &l1, const Luminance &l2) {
+		return {l1.getR() + l2.getR(),
+				l1.getG() + l2.getG(),
+				l1.getB() + l2.getB()};
+	}
+
 	//multiplies the luminance by a color, i.e. the light reflected off a colored surface instead of absorbed
 	Luminance operator*(const Luminance &luminance, const Color &color) {
 		return {luminance.getR() * color.r,

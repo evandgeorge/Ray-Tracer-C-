@@ -27,6 +27,9 @@ namespace raytracer {
 		double r, g, b;
 	};
 
+	//adds luminances
+	Luminance operator+(const Luminance &l1, const Luminance &l2);
+
 	//multiplies the luminance by a color, i.e. the light reflected off a colored surface instead of absorbed
 	Luminance operator*(const Luminance &luminance, const Color &color);
 
