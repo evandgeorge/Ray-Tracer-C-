@@ -8,6 +8,7 @@
 #include <geometry/Vector3D.h>
 #include <geometry/Ray.h>
 #include "Screen.h"
+#include "CameraCapture.h"
 
 namespace raytracer {
 
@@ -22,6 +23,9 @@ namespace raytracer {
 
 		//destructor
 		~Camera();
+
+		//capture the camera image and return it in CameraCapture format
+		CameraCapture capture(const std::vector<Shape *> &shapes, const std::vector<LightSource *> &lightSources, int maxRecursionDepth);
 
 	private:
 		Vector3D origin;				//origin/aperture of the camera
@@ -47,6 +51,8 @@ namespace raytracer {
 
 	};
 
+	//recursively find the luminance of a single camera ray by finding the matte luminance and reflective luminance
+	Luminance luminanceOfRay(const Ray &ray, const std::vector<Shape*> &shapes, const std::vector<LightSource*> &lightSources, int remainingReflectionDepth);
 }
 
 #endif //RAYTRACERCPP_CAMERA_H
