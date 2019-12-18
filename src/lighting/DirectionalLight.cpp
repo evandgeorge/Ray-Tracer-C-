@@ -21,7 +21,7 @@ namespace raytracer {
 	}
 
 	Ray DirectionalLight::shadowRayFromPoint(const SurfacePoint &point) const {
-		return {point.getPosition() + direction * .00001, direction};
+		return {point.getPosition() + direction * 1e-12, direction};
 	}
 
 }
