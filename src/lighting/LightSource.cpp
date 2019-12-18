@@ -6,13 +6,13 @@
 
 namespace raytracer {
 
-	Luminance globalLuminanceAtPoint(const SurfacePoint &p, const std::vector<LightSource> &lightSources,
-									 const std::vector<Shape*> &shapes) {
+	Luminance globalLuminanceAtPoint(const SurfacePoint &p, const std::vector<Shape *> &shapes,
+									 const std::vector<LightSource *> &lightSources) {
 
 		Luminance luminance(0, 0, 0);
 
 		for(auto lightSources_itr = lightSources.begin(); lightSources_itr != lightSources.end(); ++lightSources_itr)
-			luminance += lightSources_itr->luminanceAtPoint(p, shapes);
+			luminance += (*lightSources_itr)->luminanceAtPoint(p, shapes);
 
 		return luminance;
 	}
