@@ -14,14 +14,14 @@ namespace raytracer {
 		if(inShadow(shadowRay, INFINITY, shapes))
 			return {0, 0, 0};
 
-		//ratio between the intensity of emitted light to the intensity of the incident light
-		double matteFactor = point.getSurfaceNormal().dotProduct(shadowRay.direction);
+		//ratio between the intensity of emitted (scattered) light to the intensity of the incident light, for a perfectly matte surface
+		double diffuseFactor = point.getSurfaceNormal().dotProduct(shadowRay.direction);
 
-		return matteFactor * sourceLuminance * point.getShapePointer()->getColor();
+		return diffuseFactor * sourceLuminance * point.getShapePointer()->getColor();
 	}
 
 	Ray DirectionalLight::shadowRayFromPoint(const SurfacePoint &point) const {
-		return Ray(point.getPosition() + direction * .01, direction);
+		return {point.getPosition() + direction * .00001, direction};
 	}
 
 }
