@@ -5,6 +5,7 @@
 #ifndef RAYTRACERCPP_SHAPE_H
 #define RAYTRACERCPP_SHAPE_H
 
+#include <vector>
 #include "Color.h"
 #include "Vector3D.h"
 #include "Ray.h"
@@ -20,6 +21,7 @@ namespace raytracer {
 		virtual bool findFirstIntersection(const Ray &ray, double &time, SurfacePoint &surfacePoint) const = 0;
 
 		const Color &getColor() const { return color; }
+		double getReflectivity() const { return reflectivity; }
 	private:
 		//abstract method to be implemented by subclasses of shape that returns the surface normal at a point on the shapes surface
 		virtual Vector3D surfaceNormalAt(const Vector3D &point) const = 0;
@@ -27,6 +29,8 @@ namespace raytracer {
 		Color color;
 		double reflectivity;	//Proportion of light that is reflected, complement of proportion of light that is scattered (matte reflectance)
 	};
+
+	bool firstIntersectionInScene(const Ray &ray, SurfacePoint &surfacePoint, std::vector<Shape *> shapes);
 }
 
 #endif //RAYTRACERCPP_SHAPE_H
