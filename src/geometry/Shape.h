@@ -30,6 +30,7 @@ namespace raytracer {
 		double reflectivity;	//Proportion of light that is reflected, complement of proportion of light that is scattered (matte reflectance)
 	};
 
+	//find the first intersection a ray makes with any shape in the scene
 	bool firstIntersectionInScene(const Ray &ray, SurfacePoint &surfacePoint, std::vector<Shape *> shapes);
 }
 
