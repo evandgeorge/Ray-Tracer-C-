@@ -23,6 +23,9 @@ namespace raytracer {
 		//destructor
 		~CameraCapture();
 
+		int getWidth() const { return width; }
+		int getHeight() const { return height; }
+
 		Luminance &luminanceAt(int x, int y) { return rayLuminance[x][y]; }
 	private:
 		Luminance **rayLuminance;		//luminance of all camera rays
